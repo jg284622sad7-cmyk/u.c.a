@@ -10,21 +10,18 @@
         /* --- CONFIGURACIÓN BASE INTACTA --- */
         body { font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; color: #1a2e1a; scroll-behavior: smooth; cursor: none; }
         
-        /* --- SCROLLBAR PREMIUM --- */
+        /* SCROLLBAR PREMIUM */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #ecfccb; }
         ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #14532d; }
 
-        /* =========================================================
-           --- EL FONDO DE ÁRBOLES (PURO CÓDIGO ANIMADO) ---
-           ========================================================= */
+        /* EL FONDO DE ÁRBOLES (ANIMADO) */
         .forest-background {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -20;
             background: linear-gradient(to bottom, #f0fdf4 0%, #d1fae5 100%);
             overflow: hidden; pointer-events: none;
         }
-
         .forest-layer { position: absolute; bottom: 0; left: 0; width: 200vw; height: 100%; display: flex; align-items: flex-end; }
         .forest-layer svg { width: 100vw; height: 100%; flex-shrink: 0; preserveAspectRatio: none; }
         .layer-back { animation: scrollLeft 100s linear infinite; opacity: 0.5; }
@@ -32,15 +29,12 @@
         .layer-front { animation: scrollLeft 40s linear infinite; opacity: 0.9; }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-100vw); } }
 
-        /* --- OVERLAY VERDE SUTIL --- */
         .video-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(240, 253, 244, 0.3); z-index: -10; pointer-events: none; }
-
-        /* --- PARTÍCULAS AMBIENTALES (EFECTO LUCIÉRNAGAS) --- */
         .particles-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -5; pointer-events: none; }
         .particle { position: absolute; background: rgba(134, 239, 172, 0.6); border-radius: 50%; filter: blur(3px); animation: floatUp infinite linear; }
         @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
 
-        /* --- ANIMACIONES DEL LOGO SUPERIOR --- */
+        /* ANIMACIONES LOGO */
         @keyframes balanceo { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(1.5deg); } }
         @keyframes brisa { 0%, 100% { transform: scale(1) translateY(0); } 50% { transform: scale(1.05) translateY(-3px); } }
         .tronco-movimiento { animation: balanceo 6s ease-in-out infinite; transform-origin: bottom center; }
@@ -48,7 +42,7 @@
         .anim-hoja-2 { animation: brisa 5s ease-in-out infinite 1s; transform-origin: center; }
         .anim-hoja-3 { animation: brisa 3s ease-in-out infinite 0.5s; transform-origin: center; }
 
-        /* --- ESTILOS DE TARJETAS (3D) --- */
+        /* TARJETAS 3D Y DESTELLO */
         .service-card { 
             background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -58,64 +52,51 @@
             position: relative; overflow: hidden;
         }
         .service-card:hover { border-color: #15803d; box-shadow: 0 30px 50px -15px rgba(21, 128, 61, 0.3); }
-        .service-card > * { transform: translateZ(30px); pointer-events: none; } 
-
-        /* --- DESTELLO DE CRISTAL (SHINE EFFECT) --- */
         .service-card::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
             transform: skewX(-25deg); transition: all 0.75s ease; z-index: 1; pointer-events: none;
         }
         .service-card:hover::before { left: 200%; }
+        .service-card > * { transform: translateZ(30px); }
 
-        /* --- ANIMACIÓN DE SCROLL (REVEAL) --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- BOTÓN FLOTANTE --- */
-        .back-to-top { position: fixed; bottom: -60px; right: 30px; z-index: 50; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; }
+        
+        .back-to-top { 
+            position: fixed; bottom: -60px; right: 20px; z-index: 50; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; 
+        }
         .back-to-top.visible { bottom: 30px; opacity: 1; }
 
-        /* =========================================================
-           --- INYECCIONES PREMIUM ---
-           ========================================================= */
-        /* 1. Cursor Personalizado */
+        /* CURSOR Y OTROS */
         .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
         .cursor-dot { width: 6px; height: 6px; background-color: #15803d; transition: transform 0.1s; box-shadow: 0 0 10px #22c55e; }
-        .cursor-outline { width: 36px; height: 36px; border: 2px solid rgba(21, 128, 61, 0.6); transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background-color 0.2s; box-shadow: 0 0 15px rgba(34, 197, 94, 0.3); }
+        .cursor-outline { width: 36px; height: 36px; border: 2px solid rgba(21, 128, 61, 0.6); transition: transform 0.15s ease-out; box-shadow: 0 0 15px rgba(34, 197, 94, 0.3); }
         @media (pointer: coarse) { body { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } }
-
-        /* 2. Barra de Progreso de Scroll */
-        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #22c55e, #14532d); z-index: 10000; transition: width 0.1s ease-out; box-shadow: 0 0 10px rgba(34, 197, 94, 0.8); }
-
-        /* 3. Menú Navegación Flotante (Sticky Nav) */
-        .sticky-nav { position: fixed; top: -100px; left: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(134, 239, 172, 0.5); z-index: 40; transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
+        
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #22c55e, #14532d); z-index: 10000; transition: width 0.1s ease-out; }
+        .sticky-nav { position: fixed; top: -100px; left: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(134, 239, 172, 0.5); z-index: 40; transition: top 0.4s; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
         .sticky-nav.visible { top: 0; }
-
-        /* 4. Indicador de Scroll Magnético */
         .scroll-indicator { width: 26px; height: 40px; border: 2px solid #15803d; border-radius: 20px; position: relative; margin: 2rem auto 0; }
         .scroll-indicator::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #15803d; border-radius: 50%; animation: scrollWheel 2s infinite; }
         @keyframes scrollWheel { 0% { top: 8px; opacity: 1; } 100% { top: 24px; opacity: 0; } }
-
-        /* 5. Efecto Magnético */
         .magnetic { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
-
     </style>
 </head>
 <body class="antialiased">
 
     <div class="scroll-progress" id="scrollProgress"></div>
-
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-outline" id="cursorOutline"></div>
 
-    <nav class="sticky-nav flex justify-between items-center px-8 py-4 hidden md:flex" id="stickyNav">
-        <div class="text-2xl font-black tracking-tighter text-slate-900 cursor-none">U<span class="text-green-600 drop-shadow-[0_0_5px_rgba(34,197,94,0.8)]">.</span>C<span class="text-green-600 drop-shadow-[0_0_5px_rgba(34,197,94,0.8)]">.</span>A</div>
-        <div class="flex space-x-8 uppercase text-[10px] tracking-[0.3em] font-black text-slate-800 cursor-none">
+    <nav class="sticky-nav flex justify-between items-center px-4 md:px-8 py-4 hidden md:flex" id="stickyNav">
+        <div class="text-2xl font-black tracking-tighter text-slate-900">U<span class="text-green-600">.</span>C<span class="text-green-600">.</span>A</div>
+        <div class="flex space-x-8 uppercase text-[10px] tracking-[0.3em] font-black text-slate-800">
             <a href="#nosotros" class="magnetic hover:text-green-700">Nosotros</a>
             <a href="#servicios" class="magnetic hover:text-green-700">Servicios</a>
             <a href="#experiencia" class="magnetic hover:text-green-700">Experiencia</a>
-            <a href="#contacto" class="magnetic bg-gradient-to-r from-green-700 to-green-600 text-white px-5 py-2 rounded-full hover:shadow-[0_0_15px_rgba(21,128,61,0.6)]">Contacto</a>
+            <a href="#contacto" class="magnetic bg-gradient-to-r from-green-700 to-green-600 text-white px-5 py-2 rounded-full">Contacto</a>
         </div>
     </nav>
 
@@ -137,128 +118,124 @@
     <div class="particles-container" id="particles"></div>
     <div class="video-overlay"></div>
 
-    <header class="min-h-screen flex flex-col justify-center pt-16 pb-12 relative z-10 cursor-none">
+    <header class="min-h-screen flex flex-col justify-center pt-16 pb-12 relative z-10 px-4">
         <div class="container mx-auto flex flex-col items-center justify-center reveal">
-            
             <div class="relative flex flex-col items-center justify-center h-48 w-full mt-10">
-                <svg id="heroTree" class="absolute w-72 h-72 opacity-25 pointer-events-none transition-transform duration-300 ease-out" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <svg id="heroTree" class="absolute w-64 h-64 md:w-72 md:h-72 opacity-25 pointer-events-none transition-transform duration-300 ease-out" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <g class="tronco-movimiento"><path d="M100 180 Q95 140 100 100 T110 40" stroke="#4B3621" stroke-width="5" fill="none" stroke-linecap="round" /><path d="M100 130 Q120 110 140 105" stroke="#4B3621" stroke-width="3" fill="none" stroke-linecap="round" /><path d="M100 145 Q80 120 60 125" stroke="#4B3621" stroke-width="3" fill="none" stroke-linecap="round" /></g>
                     <g class="hojas-viento"><ellipse cx="105" cy="35" rx="25" ry="20" fill="#166534" class="anim-hoja-1" /><ellipse cx="140" cy="55" rx="20" ry="18" fill="#15803D" class="anim-hoja-2" /><ellipse cx="70" cy="60" rx="22" ry="19" fill="#22C55E" class="anim-hoja-3" /><ellipse cx="100" cy="80" rx="30" ry="25" fill="#14532D" opacity="0.6" /></g>
                 </svg>
-
                 <div class="relative z-10 text-center">
-                    <h1 class="text-8xl md:text-9xl font-black tracking-tighter text-slate-900 leading-none drop-shadow-2xl">
-                        U<span class="text-green-600 drop-shadow-[0_0_8px_rgba(34,197,94,0.9)]">.</span>C<span class="text-green-600 drop-shadow-[0_0_8px_rgba(34,197,94,0.9)]">.</span>A
+                    <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-slate-900 leading-none drop-shadow-2xl">
+                        U<span class="text-green-600">.</span>C<span class="text-green-600">.</span>A
                     </h1>
-                    <p class="text-xs md:text-sm uppercase tracking-[0.5em] font-bold text-green-900 mt-6 bg-white/70 inline-block px-6 py-2 rounded-full backdrop-blur-xl shadow-xl border border-green-200">
+                    <p class="text-[10px] md:text-sm uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold text-green-900 mt-6 bg-white/70 inline-block px-4 md:px-6 py-2 rounded-full backdrop-blur-xl shadow-xl border border-green-200">
                         Unidad de Consultores y Asesores Ambientales S.A.S.
                     </p>
                 </div>
             </div>
-
-            <nav class="mt-12 flex space-x-10 uppercase text-[10px] tracking-[0.3em] font-black text-slate-800 bg-white/70 px-8 py-3 rounded-full backdrop-blur-xl shadow-xl border border-green-200">
+            <nav class="mt-12 flex flex-wrap justify-center gap-4 md:gap-10 uppercase text-[10px] tracking-[0.3em] font-black text-slate-800 bg-white/70 px-6 md:px-8 py-3 rounded-2xl md:rounded-full backdrop-blur-xl shadow-xl border border-green-200">
                 <a href="#nosotros" class="magnetic hover:text-green-700">Nosotros</a>
                 <a href="#servicios" class="magnetic hover:text-green-700">Servicios</a>
                 <a href="#experiencia" class="magnetic hover:text-green-700">Experiencia</a>
                 <a href="#contacto" class="magnetic hover:text-green-700">Contacto</a>
             </nav>
-
             <div class="scroll-indicator mt-16 opacity-70"></div>
         </div>
     </header>
 
-    <section id="nosotros" class="py-24 px-6 relative z-10 cursor-none">
+    <section id="nosotros" class="py-24 px-4 md:px-6 relative z-10">
         <div class="container mx-auto">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 drop-shadow-sm">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 drop-shadow-sm">
                     Perfil Corporativo
                 </h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-green-700 to-green-400 mx-auto mt-4 rounded-full shadow-sm"></div>
             </div>
 
-            <div class="service-card tilt-card p-10 rounded-3xl shadow-xl mb-12 max-w-4xl mx-auto text-center reveal" style="transition-delay: 100ms;">
-                <p class="text-slate-800 text-lg leading-relaxed font-semibold">
-                    U.C.A. Ambientales S.A.S. es una firma interdisciplinaria de consultoría especializada en gestión ambiental, ingeniería forestal y asesoría técnico-jurídica ambiental. Desde nuestra creación en 2021 en la ciudad de Cali, integramos conocimientos en ingeniería ambiental y forestal, derecho ambiental, gestión empresarial y planificación territorial. Ofrecemos soluciones integrales para el desarrollo de proyectos que requieren cumplimiento normativo ambiental y manejo adecuado de los recursos naturales.
+            <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl mb-12 max-w-4xl mx-auto text-center reveal">
+                <p class="text-slate-800 text-base md:text-lg leading-relaxed font-semibold">
+                    U.C.A. Ambientales S.A.S. es una firma interdisciplinaria de consultoría especializada en gestión ambiental, ingeniería forestal y asesoría técnico-jurídica ambiental, orientada a apoyar a entidades públicas y privadas en la planificación, ejecución y cumplimiento de proyectos bajo criterios de sostenibilidad y responsabilidad ambiental. Desde nuestra creación en 2021 en la ciudad de Cali, integramos conocimientos para ofrecer soluciones integrales que requieren cumplimiento normativo y manejo adecuado de los recursos naturales.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl border-t-4 border-green-600 reveal" style="transition-delay: 200ms;">
-                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter text-green-800">Nuestra Misión</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto">
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl border-t-4 border-green-600 reveal">
+                    <h3 class="text-xl md:text-2xl font-black mb-4 uppercase tracking-tighter text-green-800">Misión</h3>
                     <p class="text-slate-700 text-sm leading-relaxed font-medium">
-                        Prestar servicios especializados de consultoría, asesoría y gestión ambiental para entidades públicas y privadas. Nuestro equipo interdisciplinario desarrolla soluciones integrales en estudios ambientales, cumplimiento normativo, interventoría y ejecución de proyectos, contribuyendo al desarrollo sostenible y al bienestar de las comunidades.
+                        Prestar servicios especializados de consultoría, asesoría y gestión ambiental para entidades públicas y privadas, apoyando la planeación, ejecución y seguimiento de proyectos bajo criterios técnicos, normativos y de sostenibilidad. Nuestro equipo interdisciplinario desarrolla soluciones integrales en estudios ambientales, cumplimiento normativo, interventoría y ejecución de proyectos.
                     </p>
                 </div>
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl border-t-4 border-green-600 reveal" style="transition-delay: 300ms;">
-                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter text-green-800">Nuestra Visión</h3>
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl border-t-4 border-green-600 reveal">
+                    <h3 class="text-xl md:text-2xl font-black mb-4 uppercase tracking-tighter text-green-800">Visión</h3>
                     <p class="text-slate-700 text-sm leading-relaxed font-medium">
-                        Para el año 2030, U.C.A. Ambientales S.A.S. será reconocida en Colombia como una firma líder en consultoría y gestión ambiental aplicada a proyectos de infraestructura, desarrollo territorial y manejo de recursos naturales. Nos destacaremos por nuestra excelencia técnica, ética profesional y compromiso con la sostenibilidad ambiental y social.
+                        Para el año 2030, U.C.A. Ambientales S.A.S. será reconocida en Colombia como una firma líder en consultoría y gestión ambiental aplicada a proyectos de infraestructura, desarrollo territorial y manejo de recursos naturales, destacándonos por nuestra excelencia técnica, ética profesional y compromiso con la sostenibilidad ambiental y social.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="py-24 px-6 relative z-10 border-t border-green-800/10 bg-white/10 backdrop-blur-sm cursor-none">
+    <section id="servicios" class="py-24 px-4 md:px-6 relative z-10 border-t border-green-800/10 bg-white/10 backdrop-blur-sm">
         <div class="container mx-auto">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">
                     Portafolio de Servicios
                 </h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-green-700 to-green-400 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
-                        <svg class="w-7 h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-12">
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
+                        <svg class="w-6 h-6 md:w-7 md:h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
-                    <h3 class="text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Consultoría & Cumplimiento</h3>
-                    <p class="text-slate-700 text-sm leading-relaxed font-medium">Consultoría ambiental y cumplimiento normativo. Asesoría técnico-jurídica en legislación ambiental y procesos administrativos.</p>
+                    <h3 class="text-lg md:text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Consultoría Ambiental</h3>
+                    <p class="text-slate-700 text-sm leading-relaxed font-medium">Consultoría ambiental y cumplimiento normativo. Asesoría técnico-jurídica en legislación ambiental y procesos administrativos ambientales.</p>
                 </div>
 
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
-                        <svg class="w-7 h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
+                        <svg class="w-6 h-6 md:w-7 md:h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                     </div>
-                    <h3 class="text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Estudios Ambientales</h3>
-                    <p class="text-slate-700 text-sm leading-relaxed font-medium">Elaboración de estudios ambientales, diagnósticos técnicos, estudios hidrológicos y planes de manejo ambiental.</p>
+                    <h3 class="text-lg md:text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Estudios Técnicos</h3>
+                    <p class="text-slate-700 text-sm leading-relaxed font-medium">Elaboración de estudios ambientales, diagnósticos ambientales, estudios hidrológicos y planes de manejo ambiental.</p>
                 </div>
 
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 300ms;">
-                    <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
-                        <svg class="w-7 h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 border border-green-300 shadow-inner">
+                        <svg class="w-6 h-6 md:w-7 md:h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
                     </div>
-                    <h3 class="text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Gestión Forestal</h3>
+                    <h3 class="text-lg md:text-xl font-black mb-3 uppercase tracking-tighter text-slate-900">Gestión Forestal</h3>
                     <p class="text-slate-700 text-sm leading-relaxed font-medium">Diseño e implementación de reforestación, compensaciones forestales, restauración ecológica y manejo de epífitas.</p>
                 </div>
             </div>
 
-            <div class="service-card tilt-card p-10 rounded-3xl shadow-xl max-w-4xl mx-auto reveal" style="transition-delay: 400ms;">
-                <h3 class="text-2xl font-black mb-6 uppercase text-slate-900 text-center border-b border-green-300 pb-4">Soluciones Integrales Adicionales</h3>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-800 font-semibold">
-                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md"></span> Inventarios y trámites de aprovechamiento forestal.</li>
-                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md"></span> Interventoría y supervisión ambiental de proyectos.</li>
-                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md"></span> Suministro de insumos, plantas y material vegetal.</li>
-                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md"></span> Capacitación y sensibilización ambiental.</li>
+            <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl max-w-4xl mx-auto reveal">
+                <h3 class="text-xl md:text-2xl font-black mb-6 uppercase text-slate-900 text-center border-b border-green-300 pb-4">Soluciones Integrales</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-sm text-slate-800 font-semibold">
+                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md flex-shrink-0"></span> Inventarios y trámites de aprovechamiento forestal.</li>
+                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md flex-shrink-0"></span> Interventoría y supervisión ambiental de proyectos.</li>
+                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md flex-shrink-0"></span> Suministro de insumos, plantas y material vegetal.</li>
+                    <li class="flex items-center"><span class="w-3 h-3 bg-gradient-to-r from-green-500 to-green-700 rounded-full mr-3 shadow-md flex-shrink-0"></span> Capacitación y sensibilización ambiental.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="experiencia" class="py-24 px-6 relative z-10 border-t border-green-800/10 cursor-none">
+    <section id="experiencia" class="py-24 px-4 md:px-6 relative z-10 border-t border-green-800/10">
         <div class="container mx-auto">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">
                     Experiencia Comprobada
                 </h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-green-700 to-green-400 mx-auto mt-4 rounded-full"></div>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-green-700 to-green-400 mx-auto mt-4 rounded-full shadow-sm"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 100ms;">
-                    <h3 class="text-2xl font-black mb-6 uppercase text-slate-900 border-b border-green-300 pb-3">Proyectos Destacados</h3>
-                    <ul class="space-y-5 text-sm text-slate-800 font-medium">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                    <h3 class="text-xl md:text-2xl font-black mb-6 uppercase text-slate-900 border-b border-green-300 pb-3">Proyectos Destacados</h3>
+                    <ul class="space-y-4 md:space-y-5 text-sm text-slate-800 font-medium">
                         <li class="flex items-start"><span class="text-green-600 font-black mr-2">›</span> <div><strong>Calzada Gecolsa - Dapa (Yumbo):</strong> Siembra de 2.076 árboles como compensación forestal.</div></li>
                         <li class="flex items-start"><span class="text-green-600 font-black mr-2">›</span> <div><strong>Dique Río Cauca - Cali:</strong> Elaboración de documentos técnicos, aprovechamiento forestal y manejo de epífitas.</div></li>
                         <li class="flex items-start"><span class="text-green-600 font-black mr-2">›</span> <div><strong>Ciudad Pacífica - Cali:</strong> Evaluación hidrológica y determinantes ambientales.</div></li>
@@ -268,55 +245,52 @@
                     </ul>
                 </div>
 
-                <div class="space-y-10">
-                    <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 200ms;">
-                        <h3 class="text-2xl font-black mb-4 uppercase text-slate-900 border-b border-green-300 pb-3">Fortalezas Institucionales</h3>
-                        <p class="text-sm text-slate-800 leading-relaxed font-semibold">Equipo interdisciplinario con experiencia técnica, jurídica y en trámites ante autoridades ambientales. Capacidad de gestión integral desde la planificación hasta la ejecución de proyectos de infraestructura y restauración.</p>
+                <div class="space-y-8 md:space-y-10">
+                    <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                        <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-slate-900 border-b border-green-300 pb-3">Fortalezas Institucionales</h3>
+                        <p class="text-sm text-slate-800 leading-relaxed font-semibold">Equipo interdisciplinario con experiencia técnica y jurídica ambiental. Poseemos capacidad para desarrollar estudios ambientales y proyectos forestales, con profundo conocimiento normativo aplicado a proyectos de infraestructura y gestión integral desde la planificación.</p>
                     </div>
-                    <div class="service-card tilt-card p-10 rounded-3xl shadow-xl reveal" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-black mb-4 uppercase text-slate-900 border-b border-green-300 pb-3">Sectores Atendidos</h3>
-                        <p class="text-sm text-slate-800 leading-relaxed font-semibold">Atendemos a empresas constructoras, consorcios de obras civiles, sector industrial, sector agropecuario y entidades privadas con requerimientos ambientales.</p>
+                    <div class="service-card tilt-card p-6 md:p-10 rounded-3xl shadow-xl reveal">
+                        <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-slate-900 border-b border-green-300 pb-3">Sectores Atendidos</h3>
+                        <p class="text-sm text-slate-800 leading-relaxed font-semibold">Empresas constructoras e infraestructura, Consorcios de obras civiles, Empresas de ingeniería, Sector industrial, Sector agropecuario y Entidades privadas con requerimientos ambientales.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contacto" class="py-20 text-center relative z-10 border-t border-green-800/10 bg-white/60 backdrop-blur-xl cursor-none">
-        <div class="container mx-auto px-6 reveal">
+    <footer id="contacto" class="py-20 text-center relative z-10 border-t border-green-800/10 bg-white/60 backdrop-blur-xl px-4">
+        <div class="container mx-auto reveal">
             <h2 class="text-3xl font-black text-slate-900 uppercase tracking-widest mb-10">
                 Contacto <span class="text-green-700">U.C.A</span>
             </h2>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-10 mb-16 text-slate-900 font-black text-lg">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 mb-16 text-slate-900 font-black text-sm md:text-lg">
                 <div class="magnetic flex items-center gap-3 hover:text-green-700 transition">
                     <div class="p-3 bg-green-100 rounded-full shadow-inner"><svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
                     <span>Cali - Valle del Cauca, Colombia</span>
                 </div>
                 <div class="magnetic flex items-center gap-3 hover:text-green-700 transition">
                     <div class="p-3 bg-green-100 rounded-full shadow-inner"><svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-                    <span>uca.ambientales@gmail.com</span>
+                    <span class="break-all">uca.ambientales@gmail.com</span>
                 </div>
                 <div class="magnetic flex items-center gap-3 hover:text-green-700 transition">
-                    <div class="p-3 bg-green-100 rounded-full shadow-inner"><svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+                    <div class="p-3 bg-green-100 rounded-full shadow-inner"><svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1.042.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
                     <span>313 746 6469 - 313 746 6513</span>
                 </div>
             </div>
             
-            <p class="text-xs uppercase tracking-widest text-slate-700 font-black bg-white/80 inline-block px-8 py-3 rounded-full shadow-md border border-green-200">
+            <p class="text-[10px] md:text-xs uppercase tracking-widest text-slate-700 font-black bg-white/80 inline-block px-4 md:px-8 py-3 rounded-full shadow-md border border-green-200">
                 U.C.A Ambientales S.A.S. © 2026 | Todos los derechos reservados.
             </p>
         </div>
     </footer>
 
-    <button id="backToTop" class="magnetic back-to-top bg-gradient-to-r from-green-700 to-green-600 text-white p-4 rounded-full shadow-[0_0_20px_rgba(21,128,61,0.6)] hover:bg-green-800 border border-green-400">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
+    <button id="backToTop" class="magnetic back-to-top bg-gradient-to-r from-green-700 to-green-600 text-white p-3 md:p-4 rounded-full shadow-[0_0_20px_rgba(21,128,61,0.6)] border border-green-400">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
     </button>
 
     <script type="module">
-        // 1. IMPORTAR SDK DE FIREBASE (Añadido exactamente como pidió)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        
-        // Configuración de Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyAvxkg1rCypo69SrfmzovEn2r1CrA5t3XA",
             authDomain: "ucaambiental-c3910.firebaseapp.com",
@@ -325,114 +299,81 @@
             messagingSenderId: "553948941200",
             appId: "1:553948941200:web:937482339843397f898115"
         };
+        initializeApp(firebaseConfig);
 
-        // Inicializar Firebase
-        const app = initializeApp(firebaseConfig);
-        console.log("Firebase conectado correctamente - Protocolo STARK Activo");
-
-        // 2. EFECTO CURSOR HOLOGRÁFICO
         const cursorDot = document.getElementById('cursorDot');
         const cursorOutline = document.getElementById('cursorOutline');
         window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX; const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-        
-        document.querySelectorAll('a, button, .magnetic').forEach(el => {
-            el.addEventListener('mouseenter', () => { 
-                cursorOutline.style.width = '60px'; cursorOutline.style.height = '60px'; 
-                cursorOutline.style.backgroundColor = 'rgba(34, 197, 94, 0.15)'; 
-                cursorDot.style.transform = 'scale(1.5)';
-            });
-            el.addEventListener('mouseleave', () => { 
-                cursorOutline.style.width = '36px'; cursorOutline.style.height = '36px'; 
-                cursorOutline.style.backgroundColor = 'transparent'; 
-                cursorDot.style.transform = 'scale(1)';
-            });
+            if (window.innerWidth > 768) {
+                cursorDot.style.left = `${e.clientX}px`; cursorDot.style.top = `${e.clientY}px`;
+                cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
+            }
         });
 
-        // 3. EFECTO MAGNÉTICO EN BOTONES
         const magnetics = document.querySelectorAll('.magnetic');
         magnetics.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
-                const position = btn.getBoundingClientRect();
-                const x = e.pageX - position.left - position.width / 2;
-                const y = e.pageY - position.top - position.height / 2;
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+                if (window.innerWidth > 768) {
+                    const pos = btn.getBoundingClientRect();
+                    btn.style.transform = `translate(${(e.clientX - pos.left - pos.width/2) * 0.3}px, ${(e.clientY - pos.top - pos.height/2) * 0.5}px)`;
+                }
             });
-            btn.addEventListener('mouseout', () => {
-                btn.style.transform = 'translate(0px, 0px)';
-            });
+            btn.addEventListener('mouseout', () => btn.style.transform = 'translate(0px, 0px)');
         });
 
-        // 4. PARALLAX MOUSE EN LOGO PRINCIPAL
         const heroTree = document.getElementById('heroTree');
         window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 25;
-            const y = (window.innerHeight / 2 - e.pageY) / 25;
-            heroTree.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            if (window.innerWidth > 768) {
+                heroTree.style.transform = `translateX(${(window.innerWidth/2 - e.clientX)/25}px) translateY(${(window.innerHeight/2 - e.clientY)/25}px)`;
+            }
         });
 
-        // 5. BARRA DE PROGRESO Y MENÚ STICKY
         const progressBar = document.getElementById('scrollProgress');
         const stickyNav = document.getElementById('stickyNav');
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const scroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            progressBar.style.width = (winScroll / height) * 100 + "%";
-            
-            if (winScroll > 300) { stickyNav.classList.add('visible'); } 
-            else { stickyNav.classList.remove('visible'); }
+            progressBar.style.width = (scroll / height) * 100 + "%";
+            scroll > 300 ? stickyNav.classList.add('visible') : stickyNav.classList.remove('visible');
+            const btt = document.getElementById('backToTop');
+            window.scrollY > 500 ? btt.classList.add('visible') : btt.classList.remove('visible');
         });
 
-        // 6. EFECTO INCLINACIÓN 3D (TILT) EN TARJETAS
         const cards = document.querySelectorAll('.tilt-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-                const centerX = rect.width / 2; const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -8; 
-                const rotateY = ((x - centerX) / centerX) * 8;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                if (window.innerWidth > 768) {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -8;
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 8;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                }
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)`;
-            });
+            card.addEventListener('mouseleave', () => card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)`);
         });
 
-        // 7. PARTÍCULAS AMBIENTALES
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 40; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            const size = Math.random() * 6 + 3; 
-            particle.style.width = `${size}px`; particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-            particle.style.animationDelay = `${Math.random() * 10}s`;
-            particlesContainer.appendChild(particle);
+        const pCount = window.innerWidth > 768 ? 35 : 15;
+        for (let i = 0; i < pCount; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            const size = Math.random() * 6 + 3;
+            p.style.width = p.style.height = `${size}px`;
+            p.style.left = `${Math.random() * 100}vw`;
+            p.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            p.style.animationDelay = `${Math.random() * 10}s`;
+            particlesContainer.appendChild(p);
         }
 
-        // 8. ANIMACIÓN REVEAL (SCROLL)
         const reveals = document.querySelectorAll('.reveal');
-        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        const revealOnScroll = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
         reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-        // 9. BOTÓN VOLVER ARRIBA
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) backToTopBtn.classList.add('visible');
-            else backToTopBtn.classList.remove('visible');
-        });
-        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 </body>
 </html>
