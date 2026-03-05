@@ -10,7 +10,7 @@
         /* --- CONFIGURACIÓN BASE INTACTA --- */
         body { font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; color: #1a2e1a; scroll-behavior: smooth; cursor: none; }
         
-        /* ✨ NUEVO: SCROLLBAR PREMIUM */
+        /* --- SCROLLBAR PREMIUM --- */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #ecfccb; }
         ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 10px; }
@@ -55,12 +55,12 @@
             border: 1px solid rgba(134, 239, 172, 0.4);
             transition: border-color 0.5s ease, box-shadow 0.5s ease;
             transform-style: preserve-3d;
-            position: relative; overflow: hidden; /* Necesario para el destello */
+            position: relative; overflow: hidden;
         }
         .service-card:hover { border-color: #15803d; box-shadow: 0 30px 50px -15px rgba(21, 128, 61, 0.3); }
-        .service-card > * { transform: translateZ(30px); pointer-events: none; } /* Elementos flotan en 3D */
+        .service-card > * { transform: translateZ(30px); pointer-events: none; } 
 
-        /* ✨ NUEVO: DESTELLO DE CRISTAL (SHINE EFFECT) */
+        /* --- DESTELLO DE CRISTAL (SHINE EFFECT) --- */
         .service-card::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
@@ -92,12 +92,12 @@
         .sticky-nav { position: fixed; top: -100px; left: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(134, 239, 172, 0.5); z-index: 40; transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
         .sticky-nav.visible { top: 0; }
 
-        /* 4. Indicador de Scroll Magnético (Mouse) */
+        /* 4. Indicador de Scroll Magnético */
         .scroll-indicator { width: 26px; height: 40px; border: 2px solid #15803d; border-radius: 20px; position: relative; margin: 2rem auto 0; }
         .scroll-indicator::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #15803d; border-radius: 50%; animation: scrollWheel 2s infinite; }
         @keyframes scrollWheel { 0% { top: 8px; opacity: 1; } 100% { top: 24px; opacity: 0; } }
 
-        /* ✨ NUEVO: EFECTO MAGNÉTICO (Transiciones suaves para JS) */
+        /* 5. Efecto Magnético */
         .magnetic { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
 
     </style>
@@ -312,21 +312,33 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
     </button>
 
-    <script>
-        // 1. Efecto Cursor Holográfico Mejorado
+    <script type="module">
+        // 1. IMPORTAR SDK DE FIREBASE (Añadido exactamente como pidió)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvxkg1rCypo69SrfmzovEn2r1CrA5t3XA",
+            authDomain: "ucaambiental-c3910.firebaseapp.com",
+            projectId: "ucaambiental-c3910",
+            storageBucket: "ucaambiental-c3910.firebasestorage.app",
+            messagingSenderId: "553948941200",
+            appId: "1:553948941200:web:937482339843397f898115"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log("Firebase conectado correctamente - Protocolo STARK Activo");
+
+        // 2. EFECTO CURSOR HOLOGRÁFICO
         const cursorDot = document.getElementById('cursorDot');
         const cursorOutline = document.getElementById('cursorOutline');
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX; const posY = e.clientY;
             cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            
-            // Suavizado del anillo exterior
-            cursorOutline.animate({
-                left: `${posX}px`, top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
         
-        // Efecto hover en enlaces
         document.querySelectorAll('a, button, .magnetic').forEach(el => {
             el.addEventListener('mouseenter', () => { 
                 cursorOutline.style.width = '60px'; cursorOutline.style.height = '60px'; 
@@ -340,7 +352,7 @@
             });
         });
 
-        // ✨ NUEVO: Efecto Magnético en Botones (Física)
+        // 3. EFECTO MAGNÉTICO EN BOTONES
         const magnetics = document.querySelectorAll('.magnetic');
         magnetics.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
@@ -354,7 +366,7 @@
             });
         });
 
-        // ✨ NUEVO: Parallax Mouse en el Logo Principal (Árbol 3D)
+        // 4. PARALLAX MOUSE EN LOGO PRINCIPAL
         const heroTree = document.getElementById('heroTree');
         window.addEventListener('mousemove', (e) => {
             const x = (window.innerWidth / 2 - e.pageX) / 25;
@@ -362,7 +374,7 @@
             heroTree.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
 
-        // 2. Barra de Progreso Superior
+        // 5. BARRA DE PROGRESO Y MENÚ STICKY
         const progressBar = document.getElementById('scrollProgress');
         const stickyNav = document.getElementById('stickyNav');
         window.addEventListener('scroll', () => {
@@ -370,12 +382,11 @@
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             progressBar.style.width = (winScroll / height) * 100 + "%";
             
-            // 3. Menú Navegación Flotante
             if (winScroll > 300) { stickyNav.classList.add('visible'); } 
             else { stickyNav.classList.remove('visible'); }
         });
 
-        // 4. Efecto de Inclinación 3D (Tilt) en Tarjetas
+        // 6. EFECTO INCLINACIÓN 3D (TILT) EN TARJETAS
         const cards = document.querySelectorAll('.tilt-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -391,7 +402,7 @@
             });
         });
 
-        // 5. Partículas Ambientales (Luciérnagas)
+        // 7. PARTÍCULAS AMBIENTALES
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 40; i++) {
             const particle = document.createElement('div');
@@ -404,7 +415,7 @@
             particlesContainer.appendChild(particle);
         }
 
-        // 6. Animación de Reveal (Scroll)
+        // 8. ANIMACIÓN REVEAL (SCROLL)
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -415,7 +426,7 @@
         }, { threshold: 0.1 });
         reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-        // 7. Botón Volver Arriba
+        // 9. BOTÓN VOLVER ARRIBA
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) backToTopBtn.classList.add('visible');
